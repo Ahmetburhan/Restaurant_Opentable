@@ -1,31 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Star Wars - Express</title>
+  <title>Eden Silk Road Restaurant - Express Table</title>
   <!-- Latest compiled and minified CSS & JS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 </head>
+
 <body>
 
   <div class="container">
     <div class="jumbotron">
-      <h1>Star Wars Express</h1>
-      <h3>The greatest resource in the galaxy for Star Wars statistics!</h3>
-      <hr>
-      <a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Search Characters</button></a>
-      <a href="/add"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-plus"></span> Add New Character</button></a>
+      <center>
+
+        <h1>
+          <span>Eden Silk Road Restaurant</span>
+        </h1>
+        <h3>We have only #5 tables! Book before all gone...</h3>
+        <hr>
+      </center>
+      <center>
+        <a href="/all">
+          <button type="button" class="btn btn-danger btn-lg">
+            <span class="glyphicon glyphicon-th-list"></span> View Tables</button>
+        </a>
+        <a href="/add">
+          <button type="button" class="btn btn-success btn-lg">
+            <span class="glyphicon glyphicon-plus"></span> Make a Reservation</button>
+        </a>
+
+      </center>
     </div>
+
     <div class="row">
 
       <div class="col-lg-12">
 
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><strong>Character Database</strong></h3>
+            <h3 class="panel-title"><strong>Customer Database</strong></h3>
           </div>
           <div class="panel-body" id="well-section">
 
@@ -41,13 +58,13 @@
       for (var i = 0; i < data.length; i++) {
         var wellSection = $("<div>");
         wellSection.addClass("well");
-        wellSection.attr("id", "character-well-" + i);
+        wellSection.attr("id", "customer-well-" + i);
         $("#well-section").append(wellSection);
 
-        $("#character-well-" + i).append("<h2>" + data[i].name + "</h2>");
-        $("#character-well-" + i).append("<h3>Role: " + data[i].role + "</h4>");
-        $("#character-well-" + i).append("<h3>Age: " + data[i].age + "</h4>");
-        $("#character-well-" + i).append("<h3>Force Points: " + data[i].forcePoints + "</h4>");
+        $("#customer-well-" + i).append("<h2>" + data[i].name + "</h2>");
+        $("#customer-well-" + i).append("<h3>Email: " + data[i].email + "</h4>");
+        $("#customer-well-" + i).append("<h3>Phone Number: " + data[i].phone_number + "</h4>");
+        $("#customer-well-" + i).append("<h3>Uniquie ID: " + data[i].uniquieid + "</h4>");
       }
     });
   </script>
