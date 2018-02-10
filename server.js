@@ -38,7 +38,16 @@ app.post("/api/new", function(req, res) {
 
   arrayOfReservations.push(newCustomer);
 
-  res.json(newCustomer);
+  // res.json(newCustomer);
+  console.log(arrayOfReservations);
+
+  if(arrayOfReservations.length > 5){
+    res.send("You're on the waitlist");
+  }
+  else{
+    res.send("Your spot is reserved")
+  }
+
 });
 
 // Starts the server to begin listening
