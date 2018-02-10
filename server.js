@@ -25,6 +25,8 @@ app.get("/add", function(req, res) {
 // Get all Customer
 app.get("/all", function(req, res) {
   res.json(Customer);
+
+    return res.json(arrayOfReservations);
 });
 
 // Create New Customer - takes in JSON input
@@ -40,6 +42,8 @@ app.post("/api/new", function(req, res) {
 
   res.json(newCustomer);
 });
+
+
 
 // Starts the server to begin listening
 // =============================================================
