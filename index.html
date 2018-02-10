@@ -52,9 +52,8 @@
           </div>
           <div class="panel-body">
             <div class="well">
-              
-             
-                <h3><strong> ID:</strong> <span id="uniquieid">1</span><span id="name"> Ahmet Koylan</span></h3>
+             <div id="custlist">
+              </div> 
               </div>
             </div>
           </div>
@@ -95,21 +94,23 @@
   </div>
 
   <script type="text/javascript">
-    $("#search-btn").on("click", function() {
-      var searchedCustomer = $("#Customer-search").val().trim();
+        $("#getall").on("click", function() {
 
-      searchedCustomer = searchedCustomer.replace(/\s+/g, "").toLowerCase();
+            $.get("/all", function(data) {
+                console.log(data);
+                $("#custlist").empty();
+                if (data) {
+                    for (i = 0; i < data.length; i++) {
+                        $("#custlist").append('<h3> <span id="uniquieid">' + data[i].Uniqueid + ' | ' + '</span><span id="name">  ' + data[i].Name + '</span></h3>');
+                    }
+                }
 
-      $.get("/all" + searchedCustomer, function(data) {
-        console.log(data);
-        if (data) {
-          $("#name").text(data.name);
-          $("#uniquieid").text(data.uniquieid);
-        }
-        
-      });
-    });
-  </script>
+            });
+
+
+        });
+    </script>
+  
 
 </body>
 </html>
