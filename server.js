@@ -22,12 +22,12 @@ app.get("/add", function(req, res) {
   res.sendFile(path.join(__dirname, "add.html"));
 });
 
-// Get all characters
+// Get all Customer
 app.get("/all", function(req, res) {
-  res.json(characters);
+  res.json(Customer);
 });
 
-// Create New Characters - takes in JSON input
+// Create New Customer - takes in JSON input
 app.post("/api/new", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body-parser middleware
