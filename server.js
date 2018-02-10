@@ -24,8 +24,6 @@ app.get("/add", function(req, res) {
 
 // Get all Customer
 app.get("/all", function(req, res) {
-  res.json(Customer);
-
     return res.json(arrayOfReservations);
 });
 
