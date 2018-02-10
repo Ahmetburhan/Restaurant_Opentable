@@ -48,19 +48,48 @@
 
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><strong>Customer Statistics</strong></h3>
+            <h3 class="panel-title"><strong>Current Reservations</strong></h3>
+          </div>
+          <div class="panel-body">
+            <div class="well">
+              
+             
+                <h3><strong> ID:</strong> <span id="uniquieid">1</span><span id="name"> Ahmet Koylan</span></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <strong>Wait Listed Customers</strong>
+            </h3>
           </div>
           <div class="panel-body">
             <div class="well">
               <h2 id="name">Ahmet Koylan</h2>
               <div id="stats">
-                <h3><strong>E-mail:</strong> <span id="email">ahmetburhan@gmail.com</span></h3>
-                <h3><strong>Phone Number:</strong> <span id="phone_number">6507712966</span></h3>
-                <h3><strong>Unique ID:</strong> <span id="uniquieid">1</span></h3>
+                <h3>
+                  <strong>E-mail:</strong>
+                  <span id="email">ahmetburhan@gmail.com</span>
+                </h3>
+                <h3>
+                  <strong>Phone Number:</strong>
+                  <span id="phone_number">6507712966</span>
+                </h3>
+                <h3>
+                  <strong>Unique ID:</strong>
+                  <span id="uniquieid">1</span>
+                </h3>
               </div>
             </div>
           </div>
         </div>
+
+
+
       </div>
     </div>
   </div>
@@ -71,19 +100,13 @@
 
       searchedCustomer = searchedCustomer.replace(/\s+/g, "").toLowerCase();
 
-      $.get("/api/" + searchedCustomer, function(data) {
+      $.get("/all" + searchedCustomer, function(data) {
         console.log(data);
         if (data) {
-          $("#stats").show();
           $("#name").text(data.name);
-          $("#email").text(data.email);
-          $("#phone_number").text(data.phone_number);
-          $("#uniquieid").text(data.forcePoints);
+          $("#uniquieid").text(data.uniquieid);
         }
-        else {
-          $("#name").text("The force is not strong with this one. Your Customer was not found.");
-          $("#stats").hide();
-        }
+        
       });
     });
   </script>
