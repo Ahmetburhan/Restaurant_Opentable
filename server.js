@@ -24,7 +24,7 @@ app.get("/add", function(req, res) {
 
 // Get all characters
 app.get("/all", function(req, res) {
-  res.json(characters);
+    return res.json(arrayOfReservations);
 });
 
 // Create New Characters - takes in JSON input
@@ -40,6 +40,8 @@ app.post("/api/new", function(req, res) {
 
   res.json(newCustomer);
 });
+
+
 
 // Starts the server to begin listening
 // =============================================================
