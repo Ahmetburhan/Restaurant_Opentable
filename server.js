@@ -15,11 +15,11 @@ app.use(bodyParser.json());
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "index.html"));
+    res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.get("/add", function(req, res) {
-  res.sendFile(path.join(__dirname, "add.html"));
+    res.sendFile(path.join(__dirname, "add.html"));
 });
 
 // Get all Customer
@@ -29,24 +29,23 @@ app.get("/all", function(req, res) {
 
 // Create New Customer - takes in JSON input
 app.post("/api/new", function(req, res) {
-  // req.body hosts is equal to the JSON post sent from the user
-  // This works because of our body-parser middleware
-  var newCustomer = req.body;
-  newCustomer.routeName = newCustomer.name.replace(/\s+/g, "").toLowerCase();
+    // req.body hosts is equal to the JSON post sent from the user
+    // This works because of our body-parser middleware
+    var newCustomer = req.body;
+    newCustomer.routeName = newCustomer.name.replace(/\s+/g, "").toLowerCase();
 
-  console.log(newCustomer);
+    console.log(newCustomer);
 
-  arrayOfReservations.push(newCustomer);
+    arrayOfReservations.push(newCustomer);
 
-  // res.json(newCustomer);
-  console.log(arrayOfReservations);
+    // res.json(newCustomer);
+    console.log(arrayOfReservations);
 
-  if(arrayOfReservations.length > 5){
-    res.send("You're on the waitlist");
-  }
-  else{
-    res.send("Your spot is reserved")
-  }
+    if (arrayOfReservations.length > 5) {
+        res.send("You're on the waitlist");
+    } else {
+        res.send("Your spot is reserved")
+    }
 
 });
 
@@ -55,6 +54,6 @@ app.post("/api/new", function(req, res) {
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
-  
+    console.log("App listening on PORT " + PORT);
+
 });
