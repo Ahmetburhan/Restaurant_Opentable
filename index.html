@@ -9,6 +9,27 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+        <script type="text/javascript">
+            $("#getall").on("click", function () {
+                $.get("/all", function (data) {
+                    console.log(data);
+                    $("#custlist").empty();
+                    $("#len").empty();
+
+                    $("#len").append(data.length);
+
+                    if (data) {
+                        for (i = 0; i < 5; i++) {
+                            $("#custlist").append('<h3> <span id="uniquieid">' + data[i].uniqueid + ' | ' + '</span><span id="name">  ' + data[i].name + '</span></h3>');
+                        }
+
+                        for (i = 5; i < data.length; i++) {
+                            $("#waitlist").append('<h3> <span id="uniquieid">' + data[i].uniqueid + ' | ' + '</span><span id="name">  ' + data[i].name + '</span></h3>');
+                        }
+                    }
+                });
+            });
+        </script>
 </head>
 
 <body>
@@ -22,7 +43,7 @@
                 <hr>
             </center>
             <center>
-                <button id="getall" type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-th-list"></span> View Tables</button>
+                <button id="getall" type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-th-list"></span> Updated Available Tables</button>
                 <a href="/add">
                     <button type="button" class="btn btn-success btn-lg">
                 <span class="glyphicon glyphicon-plus"></span> Make a Reservation</button>
@@ -34,7 +55,7 @@
 
             <div class="col-lg-12">
 
-                <div class="panel panel-default">
+                <!-- <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title"><strong>Customer Search</strong></h3>
                     </div>
@@ -46,7 +67,7 @@
 
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -60,7 +81,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            
 
 
             <div class="panel panel-default">
@@ -71,14 +92,18 @@
                 </div>
                 <div class="panel-body">
                     <div class="well">
-                        <div id="waitlist"> </div>>
+                        <div id="waitlist"> </div>
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
-
+<script>
+    $(window).on("load", function () {
+        var x = document.getElementById("getall"); 
+       };
+</script>
     <script type="text/javascript">
         $("#getall").on("click", function() {
             $.get("/all", function(data) {

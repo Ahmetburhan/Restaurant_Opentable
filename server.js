@@ -22,6 +22,10 @@ app.get("/add", function(req, res) {
     res.sendFile(path.join(__dirname, "add.html"));
 });
 
+// app.get("/all", function (req, res) {
+//     res.sendFile(path.join(__dirname, "all.html"));
+// });
+
 // Get all Customer
 app.get("/all", function(req, res) {
     return res.json(arrayOfReservations);

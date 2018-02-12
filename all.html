@@ -9,6 +9,27 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+  <script type="text/javascript">
+    $("#getall").on("click", function () {
+      $.get("/all", function (data) {
+        console.log(data);
+        $("#custlist").empty();
+        $("#len").empty();
+
+        $("#len").append(data.length);
+
+        if (data) {
+          for (i = 0; i < 5; i++) {
+            $("#custlist").append('<h3> <span id="uniquieid">' + data[i].uniqueid + ' | ' + '</span><span id="name">  ' + data[i].name + '</span></h3>');
+          }
+
+          for (i = 5; i < data.length; i++) {
+            $("#waitlist").append('<h3> <span id="uniquieid">' + data[i].uniqueid + ' | ' + '</span><span id="name">  ' + data[i].name + '</span></h3>');
+          }
+        }
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -16,18 +37,16 @@
   <div class="container">
     <div class="jumbotron">
       <center>
-
         <h1>
           <span>Eden Silk Road Restaurant</span>
         </h1>
-        <h3>We have only #5 tables! Book before all gone...</h3>
+        <h3>We have only
+          <span id="len"> # of</span> tables! Book before all gone...</h3>
         <hr>
       </center>
       <center>
-        <a href="/all">
-          <button type="button" class="btn btn-danger btn-lg">
-            <span class="glyphicon glyphicon-th-list"></span> View Tables</button>
-        </a>
+        <button id="getall" type="button" class="btn btn-danger btn-lg">
+          <span class="glyphicon glyphicon-th-list"></span> View Tables</button>
         <a href="/add">
           <button type="button" class="btn btn-success btn-lg">
             <span class="glyphicon glyphicon-plus"></span> Make a Reservation</button>
@@ -44,7 +63,12 @@
           <div class="panel-heading">
             <h3 class="panel-title"><strong>Customer Database</strong></h3>
           </div>
-          <div class="panel-body" id="well-section">
+              <div class="panel-body">
+                <div class="well">
+                  <div id="custlist">
+                  </div>
+                </div>
+              </div>
 
           </div>
         </div>
@@ -52,22 +76,7 @@
     </div>
   </div>
 
-  <script type="text/javascript">
-
-    $.get("/api", function(data) {
-      for (var i = 0; i < data.length; i++) {
-        var wellSection = $("<div>");
-        wellSection.addClass("well");
-        wellSection.attr("id", "customer-well-" + i);
-        $("#well-section").append(wellSection);
-
-        $("#customer-well-" + i).append("<h2>" + data[i].name + "</h2>");
-        $("#customer-well-" + i).append("<h3>Email: " + data[i].email + "</h4>");
-        $("#customer-well-" + i).append("<h3>Phone Number: " + data[i].phone_number + "</h4>");
-        $("#customer-well-" + i).append("<h3>Uniquie ID: " + data[i].uniquieid + "</h4>");
-      }
-    });
-  </script>
+ 
   
 </body>
 </html>
